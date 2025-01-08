@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Shifa</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #4e342e;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #f9a825;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #4e342e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            height: 100vh;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .header-text {
+            max-width: 50%;
+            padding-left: 50px;
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 48px;
+            line-height: 1.2;
+            font-weight: normal;
+        }
+
+        header h1:first-of-type {
+            margin-bottom: 0px;
+        }
+
+        header h1 span {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        header h2 {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 10px 0;
+        }
+
+        header button {
+            background-color: #f9a825;
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        header button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .header-img-container {
+            flex-shrink: 0;
+            padding-right: 120px;
+        }
+
+        /* Skill Section */
+        .skills {
+            background-color: #795548;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .skills h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .skill {
+            background-color: #6d4c41;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid black;
+            width: 100%;
+            max-width: 250px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .skill p {
+            font-size: 14px;
+        }
+
+        /* About Me Section */
+        .about {
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            height: auto;
+        }
+
+        .about-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .about-text {
+            width: 60%;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .about-text h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background-color: #a97b50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Education Timeline */
+        .timeline {
+            background-color: #ffcc80;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .timeline h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #5d4037;
+            font-weight: bold;
+        }
+
+        .timeline .education {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .education-item {
+            background-color: #ffe0b2;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .education-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 1024px) {
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education Timeline</a>
+</nav>
+
+<header>
+    <div class="header-text">
+        <h1>Halo</h1>
+        <h1><span>Saya Shifa Azzahra</span></h1>
+        <h2>Saya Mahasiswa Universitas Teknologi Yogyakarta</h2>
+        <button>KUNJUNGI</button>
+    </div>
+    <div class="header-img-container">
+        <img src="img/ayya.png" alt="Shifa Az Zahra" class="profile-img">
+    </div>
+</header>
+
+<section id="skills" class="skills">
+    <h2>SKILLS</h2>
+    <div class="skills-container">
+        <div class="skill">
+            <h3>Bahasa Inggris</h3>
+            <p>Mahir berbahasa Inggris, mampu berkomunikasi dengan lancar secara lisan dan tulisan. Berpengalaman dalam percakapan sehari-hari, profesional, serta memahami berbagai konteks budaya dan linguistik..</p>
+        </div>
+        <div class="skill">
+            <h3>Bahasa Korea</h3>
+            <p>Memiliki kemampuan dasar dalam berbahasa Korea, mampu berkomunikasi sederhana dan memahami percakapan dasar. Antusias terhadap budaya Korea dan terus belajar untuk meningkatkan kemampuan bahasa.</p>
+        </div>
+        <div class="skill">
+            <h3>Bahasa Belanda</h3>
+            <p>Memiliki kemampuan dasar dalam berbahasa Belanda, mampu memahami dan menggunakan frasa sederhana. Bersemangat mempelajari budaya dan bahasa Belanda untuk memperluas wawasan.</p>
+        </div>
+        <div class="skill">
+            <h3>Python</h3>
+            <p>Memiliki pemahaman dasar tentang bahasa pemrograman Python, mampu menulis skrip sederhana dan memahami konsep dasar pemrograman. Bersemangat untuk terus belajar dan mengembangkan keterampilan coding.</p>
+        </div>
+        <div class="skill">
+            <h3>Memasak</h3>
+            <p>bisa memasak dengan passion dalam menciptakan hidangan lezat dan berkesan. Menguasai berbagai resep dan teknik untuk menghadirkan cita rasa terbaik, berkomitmen untuk terus belajar dan berbagi keahlian di dunia kuliner.</p>
+        </div>
+        <div class="skill">
+            <h3>Microsoft Office</h3>
+            <p>Terampil menggunakan Microsoft Office, termasuk Word, Excel, dan PowerPoint, untuk kebutuhan administrasi, analisis data, dan presentasi profesional. Efisien dan detail dalam mengelola berbagai tugas dengan alat produktivitas ini.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h1>About Me</h1>
+            <p>Saya adalah seorang Mahasiswi, yang memiliki minat besar dalam IT. Dengan latar belakang dalam Pendidikan Informatika, saya senang menciptakan sebuah aplikasi. Saya percaya pada pentingnya terus belajar dan berkembang untuk memberikan dampak positif bagi lingkungan sekitar.</p>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="https://www.instagram.com/shfazzhraa_" target="_blank" class="icon">
+                    📷
+                </a>
+                <span>shfazzhraa_</span>
+            </div>
+            <div class="contact-item">
+                <a href="https://twitter.com/hourjozaraa" target="_blank" class="icon">
+                    🕊
+                </a>
+                <span>hourjozaraa</span>
+            </div>
+            <div class="contact-item">
+                <a href="https://www.tiktok.com/@zippasupp" target="_blank" class="icon">
+                    🎵
+                </a>
+                <span>zippasupp</span>
+            </div>            
+            <div class="contact-item">
+                <div class="icon">📞</div>
+                <span>085727078528</span>
+            </div>
+            <div class="contact-item">
+                <div class="icon">📧</div>
+                <span>shifaazzahra0012@gmail.com</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="education" class="timeline">
+    <h2>EDUCATION TIMELINE</h2>
+    <div class="education">
+        <div class="education-item">
+            <h3>SD Negeri Pakem</h3>
+            <p>2013 - 2019</p>
+            <p>Di sinilah saya memulai perjalanan pendidikan dasar saya dengan penuh semangat.</p>
+        </div>
+        <div class="education-item">
+            <h3>SMPN 3 Talang</h3>
+            <p>2019 - 2022</p>
+            <p>Pendidikan menengah pertama yang membangun fondasi akademik saya.</p>
+        </div>
+        <div class="education-item">
+            <h3>SMAS Muhammadiyah 5 Jakarta</h3>
+            <p>2022 - 2025</p>
+            <p>Pengalaman pendidikan menengah atas yang memperkaya wawasan dan bakat saya.</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
